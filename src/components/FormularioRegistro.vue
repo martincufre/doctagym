@@ -1,6 +1,6 @@
 <template>
     <div>
-    <form @submit.prevent="registro">
+    <form @submit.prevent="agregarMiembro">
         <input type="text" v-model='nombre'>
         <input type="number" v-model='dni'>
         <input type="email" v-model="email">
@@ -31,16 +31,19 @@ export default {
                     dni: this.dni,
                     email: this.email,
                     vencimiento: this.vencimiento,
-                    },
+                    };
                     
-                    this.$emit("agregar-miembro", nuevoMiembro)
-
+                    
+                    this.$emit("agregar-miembro",nuevoMiembro);
+                    
                     this.nombre = "";
                     this.dni = "";
                     this.email = "";
                     this.vencimiento = "";
                    
-                    this.mensaje = "El miembro se agrego correctamente."
+                    this.mensaje = "El miembro se agrego correctamente.";
+
+                    
                 
                 }
             

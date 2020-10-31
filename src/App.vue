@@ -23,9 +23,10 @@ export default {
   methods: {
     addMember(nuevoMiembro){
       this.listaMiembros.push(nuevoMiembro);
-    }
-  },      
-
+    },
+    
+  },
+ 
   data() {
         return{
               listaMiembros : [{

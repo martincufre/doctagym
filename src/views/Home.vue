@@ -1,16 +1,16 @@
 <template>
     <div>
-       <formulario-registro @agregar-miembro="enviarDato"></formulario-registro> 
+        <formulario-registro @agregar-miembro="enviarDato"></formulario-registro> 
     </div>
 </template>
 
 <script>
-import FormularioRegristro from "@/components/FormularioRegristro";
+import FormularioRegistro from "@/components/FormularioRegistro";
 
 export default {
     name: "Home",
     components: {
-        FormularioRegristro
+        FormularioRegistro
     },
 
     methods: {
