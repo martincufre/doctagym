@@ -37,9 +37,9 @@ export default {
       let login = this.listaMiembros.find(miembro=>{
         return usuario.nombre == miembro.nombre && usuario.dni == miembro.dni;
       })
-      let fecha = new Date();
-
-      let vencimiento = new Date(`${login.vencimiento} 00:00`);
+      let fecha;
+      
+      let vencimiento; 
       
       if(vencimiento >= fecha && this.logueado == login.nombre && this.logueado == login.dni){
                 this.logueado = true;
@@ -56,12 +56,14 @@ export default {
   data() {
         return{
           logueado: false,
-          mesajeLogin: false,
+          fecha : new Date(),
+          vencimiento: new Date(`${this.login.vencimiento} 00:00`),
+           
               listaMiembros : [{
                                     "nombre": "Juan Pérez",
                                     "dni": 12312312,
                                     "email": "juanperez@gmail.com",
-                                    "vencimiento": "2020-09-10"
+                                    "vencimiento": "2021-09-10"
                                 },
                                 {
                                     "nombre": "Manjula Pérez",
