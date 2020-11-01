@@ -7,8 +7,8 @@
   
   
   <div>
-    <p v-if="vencimiento >= fecha">Ingreso con éxito</p>
-    <p v-else>Tu suscripcion esta vencida</p>
+    <p>{{mesajeLogin}}</p>
+  
   </div>
 
 
@@ -39,13 +39,24 @@ export default {
       })
       let fecha = new Date();
 
-      let vencimiento = new Date(`${login.vencimiento} 00:00`); 
+      let vencimiento = new Date(`${login.vencimiento} 00:00`);
+      
+      if(vencimiento >= fecha && this.logueado == login.nombre && this.logueado == login.dni){
+                this.logueado = true;
+                this.mesajeLogin= "Ingreso con éxito.";
+            }else{
+                this.logueado = false;
+                this.mesajeLogin = "Tu suscripcion está vencida.";
+                
+            }
 
     }  
   },
  
   data() {
         return{
+          logueado: false,
+          mesajeLogin: false,
               listaMiembros : [{
                                     "nombre": "Juan Pérez",
                                     "dni": 12312312,
@@ -78,6 +89,7 @@ export default {
                                 }
                                 ]
                 }
+                
           },
   }
   
