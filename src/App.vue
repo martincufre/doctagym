@@ -24,7 +24,21 @@ export default {
     addMember(nuevoMiembro){
       this.listaMiembros.push(nuevoMiembro);
     },
-    
+
+    ingreso(usuario){
+      let login = this.listaMiembros.find(miembro=>{
+        return usuario.nombre == miembro.miembro && usuario.dni == miembro.dni;
+      })
+      let fecha = new Date();
+
+      let vencimiento = new Date(login.vencimiento);
+
+      if(vencimiento >= fecha){
+                <p>Ingreso con éxito.</p>
+            }else{
+                <p>Tu suscripción esta vencida.</p>
+            }
+  },
   },
  
   data() {
@@ -64,9 +78,6 @@ export default {
           },
   }
   
-          
-       
-
 </script>
 
 <style>

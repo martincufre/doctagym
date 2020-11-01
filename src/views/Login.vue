@@ -20,11 +20,7 @@ export default {
     methods:{
         login(){
             this.$emit('event-login', {'nombre':this.nombre,'dni':this.dni})
-            if(this.nombre == nombre && this.dni == dni){
-                <p>Ingreso con éxito.</p>
-            }else{
-                <p>Tu suscripción esta vencida.</p>
-            }
+            
         }
         
     }
