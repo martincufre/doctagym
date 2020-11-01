@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <encabezado-gim>DoctaGYM</encabezado-gim>
-    <router-view @agregar-dato="addMember" />
+    <router-view :miembros="listaMiembros" @actualizar-miembro="actualizar" @agregar-dato="addMember" />
 
     {{listaMiembros}}
   
@@ -50,7 +50,12 @@ export default {
                 
             }
 
-    }  
+    },
+    
+    actualizar(datosNuevos){
+      this.listaMiembros.splice(datosNuevos.posicion,1,datosNuevos.miembro);
+
+    }
   },
  
   data() {
