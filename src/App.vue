@@ -4,6 +4,14 @@
     <router-view @agregar-dato="addMember" />
 
     {{listaMiembros}}
+  
+  
+  <div>
+    <p v-if="vencimiento >= fecha">Ingreso con éxito</p>
+    <p v-else>Tu suscripcion esta vencida</p>
+  </div>
+
+
   </div>
 
 
@@ -27,18 +35,13 @@ export default {
 
     ingreso(usuario){
       let login = this.listaMiembros.find(miembro=>{
-        return usuario.nombre == miembro.miembro && usuario.dni == miembro.dni;
+        return usuario.nombre == miembro.nombre && usuario.dni == miembro.dni;
       })
       let fecha = new Date();
 
-      let vencimiento = new Date(login.vencimiento);
+      let vencimiento = new Date(`${login.vencimiento} 00:00`); 
 
-      if(vencimiento >= fecha){
-                <p>Ingreso con éxito.</p>
-            }else{
-                <p>Tu suscripción esta vencida.</p>
-            }
-  },
+    }  
   },
  
   data() {

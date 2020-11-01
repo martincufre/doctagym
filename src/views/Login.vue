@@ -21,6 +21,7 @@ export default {
         login(){
             this.$emit('event-login', {'nombre':this.nombre,'dni':this.dni})
             
+            
         }
         
     }
