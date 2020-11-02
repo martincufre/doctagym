@@ -17,15 +17,12 @@ export default {
             dni: '',
         }
     },
-    props:{
-        listaMiembros: Array
-    },
     methods:{
         login(){
-            this.$emit('event-login', this.nombre, this.dni)
+            this.$emit('event-login', {'nombre':this.nombre,'dni':this.dni})
             
             this.nombre= '';
-            this.dni='';
+            this.dni=''
         }
         
         

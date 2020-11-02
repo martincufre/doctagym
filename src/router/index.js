@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from "../views/Home.vue"
 import Login from "../views/Login.vue"
 import Editar from "../views/Editar.vue"
-
+import Eliminar from "../views/Eliminar.vue"
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,7 +21,13 @@ const routes = [
     path: "/editar",
     name: "Editar",
     component: Editar
+  },
+  {
+    path: "/eliminar",
+    name: "Eliminar",
+    component: Eliminar
   }
+
 ]
 
 

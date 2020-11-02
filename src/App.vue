@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <encabezado-gim>DoctaGYM</encabezado-gim>
-    <router-view :miembros="listaMiembros" @actualizar-miembro="actualizar" @agregar-dato="addMember" />
+    <router-view :miembros="listaMiembros" @actualizar-miembro="actualizar" @eliminar-miembro='eliminarMiembro' @agregar-dato="addMember" />
 
     {{listaMiembros}}
   
   
-  <div>
-    <p>{{mesajeLogin}}</p>
   
-  </div>
+  <p>{{mesajeLogin}}</p>
+  
+  
 
 
   </div>
@@ -37,11 +37,11 @@ export default {
       let login = this.listaMiembros.find(miembro=>{
         return usuario.nombre == miembro.nombre && usuario.dni == miembro.dni;
       })
-      let fecha;
+      //let fecha;
       
-      let vencimiento; 
+      //let vencimiento; 
       
-      if(vencimiento >= fecha && this.logueado == login.nombre && this.logueado == login.dni){
+      if(this.logueado == login.nombre && this.logueado == login.dni){
                 this.logueado = true;
                 this.mesajeLogin= "Ingreso con éxito.";
             }else{
@@ -55,14 +55,17 @@ export default {
     actualizar(datosNuevos){
       this.listaMiembros.splice(datosNuevos.posicion,1,datosNuevos.miembro);
 
+    },
+    eliminarMiembro(pos){
+        this.listaMiembros.splice(pos,1);
     }
   },
  
   data() {
         return{
           logueado: false,
-          fecha : new Date(),
-          vencimiento: new Date(`${this.login.vencimiento} 00:00`),
+          //fecha : new Date(),
+          //vencimiento: new Date(`${this.login.vencimiento} 00:00`),
            
               listaMiembros : [{
                                     "nombre": "Juan Pérez",
