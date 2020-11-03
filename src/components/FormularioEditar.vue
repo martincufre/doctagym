@@ -2,8 +2,8 @@
     <div>
         <select @change="selectMember" v-model="selectedMember">
             <option value="">Elegí un miembro</option>
-            <option :value="pos" v-for="(miembro,pos) in miembros" :key="miembro.dni"></option>
-                {{miembro.nombre}}
+            <option :value="pos" v-for="(miembro,pos) in miembros" :key="miembro.dni">{{miembro.nombre}}</option>
+               
         </select>
         <form @submit.prevent="editarMiembro">
             <input type="text" v-model='nombre'>
@@ -56,3 +56,20 @@ export default {
     
 }
 </script>
+
+<style scoped>
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        margin: 0 auto;
+    }
+    input{
+        margin-bottom: 10px;
+        border-radius: 5px;
+        height: 40px;
+        width: 500px;
+    }
+
+</style>

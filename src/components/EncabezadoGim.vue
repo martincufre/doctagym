@@ -14,12 +14,12 @@ export default {
 
 <style scoped>
     header{
-        background-color: #9b992e;
+        background-color: steelblue;
         padding: 20px 0;
     }
     h1{
         text-align: center;
-        color: black;
+        color: white;
         text-shadow: 1px 1px black;
     }
 </style>

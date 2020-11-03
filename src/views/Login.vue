@@ -29,3 +29,20 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        margin: 0 auto;
+    }
+    input{
+        margin-bottom: 10px;
+        border-radius: 5px;
+        height: 40px;
+        width: 500px;
+    }
+
+</style>

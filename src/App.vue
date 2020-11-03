@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     <encabezado-gim>DoctaGYM</encabezado-gim>
-    <router-view :miembros="listaMiembros" @actualizar-miembro="actualizar" @eliminar-miembro='eliminarMiembro' @agregar-dato="addMember" />
-
-    {{listaMiembros}}
+    <router-view :miembros="listaMiembros" @event-login="ingreso" @actualizar-miembro="actualizar" @eliminar-miembro='eliminarMiembro' @agregar-dato="addMember" />
+    <nav-menu></nav-menu>
+    
   
   
   
-  <p>{{mesajeLogin}}</p>
   
+  <div>
+    <p>{{mensajelogin}}</p>
+  </div>
   
 
 
@@ -20,12 +22,13 @@
 
 <script>
 import EncabezadoGim from "@/components/EncabezadoGim";
-
+import NavMenu from '@/components/NavMenu'; 
 
 export default {
   name: 'App',
   components: {
           EncabezadoGim,
+          NavMenu
         },
 
   methods: {
@@ -37,24 +40,21 @@ export default {
       let login = this.listaMiembros.find(miembro=>{
         return usuario.nombre == miembro.nombre && usuario.dni == miembro.dni;
       })
-      //let fecha;
-      
-      //let vencimiento; 
-      
-      if(this.logueado == login.nombre && this.logueado == login.dni){
-                this.logueado = true;
-                this.mesajeLogin= "Ingreso con éxito.";
-            }else{
-                this.logueado = false;
-                this.mesajeLogin = "Tu suscripcion está vencida.";
-                
-            }
-
-    },
+      console.log(login);
+       if(login){
+         let fecha = new Date(Date.now() - 3*60*60*1000);
+         let vencimiento = new Date(`${login.vencimiento} 00:00`);
+         if(vencimiento >= fecha){
+          this.logueado = true;
+          this.mensajelogin = "Datos correctos.";
+         }else{
+           this.mensajelogin = "Suscripcion vencida.";
+         }
+      }
+    },  
     
     actualizar(datosNuevos){
       this.listaMiembros.splice(datosNuevos.posicion,1,datosNuevos.miembro);
-
     },
     eliminarMiembro(pos){
         this.listaMiembros.splice(pos,1);
@@ -64,8 +64,8 @@ export default {
   data() {
         return{
           logueado: false,
-          //fecha : new Date(),
-          //vencimiento: new Date(`${this.login.vencimiento} 00:00`),
+          mensajelogin: null,
+          
            
               listaMiembros : [{
                                     "nombre": "Juan Pérez",
@@ -106,5 +106,7 @@ export default {
 </script>
 
 <style>
-
+  body{
+    font-family: Verdana;
+  }
 </style>
